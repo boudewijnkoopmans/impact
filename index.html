@@ -1,151 +1,602 @@
 <!DOCTYPE html>
-# Intake Partnership FGw
-**Voor onderzoekers en docenten die een samenwerking met een externe partner willen verkennen**
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Intake Partnership FGw - Universiteit van Amsterdam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --uva-red: #b32424;
+            --uva-red-soft: #d64a4a;
+            --bg-gray: #f4f4f4;
+            --border-gray: #dddddd;
+            --text-main: #222222;
+            --text-muted: #666666;
+            --card-bg: #ffffff;
+            --focus-ring: #1a73e8;
+        }
 
-Vragen over de intake? Neem contact op via **impact-fgw@uva.nl**
+        * {
+            box-sizing: border-box;
+        }
 
----
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
 
-## Deel A – De partner en de aanleiding
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 24px 16px;
+        }
 
-**A1. Wie is de potentiële partner?**
-- Naam organisatie:
-- Type organisatie: ☐ Bedrijf ☐ NGO / maatschappelijke organisatie ☐ Overheid / publieke instelling ☐ Culturele instelling ☐ Anders, namelijk:
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            max-width: 900px;
+            width: 100%;
+            padding: 24px;
+        }
 
-**A2. Hoe is dit contact ontstaan?**
-☐ Partner heeft zelf contact opgenomen
-☐ Ik ken de partner al persoonlijk
-☐ Via een collega of netwerkevenement
-☐ Via het Impact Team / Amsterdam Humanities Hub
-☐ Anders, namelijk:
+        @media (min-width: 768px) {
+            .card {
+                padding: 32px 40px;
+            }
+        }
 
-**A3. Is er al eerder samengewerkt met deze partner (door jou of door de faculteit)?**
-☐ Nee, dit is een nieuw contact
-☐ Ja, incidenteel (bijv. één project of gastcollege)
-☐ Ja, er is al een lopende samenwerking
+        header h1 {
+            margin: 0 0 4px;
+            font-size: 1.8rem;
+            color: var(--uva-red);
+        }
 
-**A4. Sluit de samenwerking aan op een van de zes FGw-onderzoeksthema's?**
-☐ Cultural Heritage & Identity
-☐ Humane AI
-☐ Empowering Language
-☐ Digital Citizenship
-☐ Health Humanities
-☐ Environment & Society
-☐ Weet ik niet / past niet direct
+        header p.subtitle {
+            margin: 0 0 12px;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
 
-**A5. Wat voor samenwerking zoek je? (meerdere opties mogelijk)**
-☐ Samenwerking in het onderwijs → ga naar **Deel B**
-☐ Samenwerking in het onderzoek → ga naar **Deel C**
-☐ Beide → doorloop beide delen
+        header p.contact {
+            margin: 0 0 24px;
+            font-size: 0.95rem;
+        }
 
----
+        header p.contact a {
+            color: var(--uva-red-soft);
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-## Deel B – Onderwijs
+        header p.contact a:hover,
+        header p.contact a:focus {
+            text-decoration: underline;
+        }
 
-**B1. Op welk niveau speelt de samenwerking?**
-☐ Eén vak of module
-☐ Meerdere vakken of een programmaonderdeel
-☐ Een volledig opleidingstraject (bijv. duale master, minor)
-☐ Nog niet duidelijk
+        .section {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-gray);
+        }
 
-**B2. Welke onderwijsvorm past het beste bij wat je voor ogen hebt?** *(meerdere opties mogelijk)*
-☐ Samenwerking in een vak (bijv. gastcollege, opdracht voor de partner)
-☐ Locatiebezoek (bijv. archief, museum, bedrijf)
-☐ Tentoonstelling of publiek eindproduct van studenten
-☐ (Verplichte) stage
-☐ Embedded research project (student werkt aan vraagstuk van de partner)
-☐ Challenge-based learning / hackathon
-☐ Anders, namelijk:
+        .section-title {
+            margin: 0 0 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--uva-red-soft);
+        }
 
-**B3. Wat brengt de partner in?**
-☐ Een concrete vraag of opdracht
-☐ Toegang tot locatie, collectie of data
-☐ Begeleiding of mentorschap van studenten
-☐ Financiering of vergoeding
-☐ Nog onduidelijk
+        .section-title span {
+            font-weight: 700;
+            margin-right: 4px;
+        }
 
-**B4. Hoe intensief is de beoogde betrokkenheid van de partner?**
-☐ Eenmalig (bijv. één gastcollege of bezoek)
-☐ Gedurende één vak of semester
-☐ Structureel, meerdere jaren
+        .field-group {
+            margin-bottom: 18px;
+        }
 
-**B5. Zijn er al andere collega's of vakgroepen betrokken bij deze samenwerking?**
-☐ Nee, dit is een individueel initiatief
-☐ Ja, binnen mijn vakgroep of opleiding
-☐ Ja, faculteitsbreed of UvA-breed
+        .field-group legend,
+        .field-group label.field-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.97rem;
+        }
 
----
+        .field-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
 
-## Deel C – Onderzoek
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 9px 11px;
+            border-radius: 6px;
+            border: 1px solid var(--border-gray);
+            font: inherit;
+            color: inherit;
+            background-color: #ffffff;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
 
-> *NB: Dit deel richt zich op samenwerking met maatschappelijke partners. Puur academische samenwerkingen (andere universiteiten, NWO-consortia zonder maatschappelijke partner) vallen buiten deze intake.*
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--focus-ring);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+        }
 
-**C1. Wat is de aard van de beoogde samenwerking?**
-☐ De partner heeft een concrete onderzoeksvraag of -opdracht
-☐ We willen samen een onderzoeksvoorstel ontwikkelen (bijv. voor NWO of Horizon)
-☐ De partner biedt toegang tot data, collectie of infrastructuur
-☐ We verkennen nog wat mogelijk is
-☐ Anders, namelijk:
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
 
-**C2. Welke samenwerkingsvorm past het beste?** *(meerdere opties mogelijk)*
-☐ Adviesopdracht (kortlopend, kennisoverdracht)
-☐ Contractonderzoek (onderzoek in opdracht van de partner)
-☐ Proof of concept (verkennend, kleinschalig)
-☐ Project in een consortium (met meerdere partners)
-☐ Embedded research project (onderzoeker werkt deels bij de partner)
-☐ Living lab (langdurige co-creatie in de praktijk)
-☐ Bijzondere leerstoel
-☐ Nog niet duidelijk
+        .options-group {
+            display: grid;
+            gap: 6px 18px;
+        }
 
-**C3. Wat is de beoogde looptijd?**
-☐ Kortlopend (< 1 jaar)
-☐ Middellang (1–3 jaar)
-☐ Langdurig / structureel (> 3 jaar)
+        @media (min-width: 600px) {
+            .options-group--columns-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
 
-**C4. Is er financiering beschikbaar of gewenst?**
-☐ Partner financiert het onderzoek (contractonderzoek / opdracht)
-☐ We zoeken gezamenlijk externe financiering (subsidie)
-☐ We verkennen nog welk financieringsmodel past
-☐ Geen financiering nodig / verwacht
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
 
-**C5. Zijn er al andere collega's, vakgroepen of externe partners betrokken?**
-☐ Nee, dit is een individueel initiatief
-☐ Ja, binnen mijn vakgroep of themalijn
-☐ Ja, faculteitsbreed of UvA-breed
-☐ Ja, er zijn ook andere externe partijen betrokken
+        .option-item input[type="checkbox"],
+        .option-item input[type="radio"] {
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
 
----
+        .option-label {
+            cursor: pointer;
+        }
 
-## Deel D – Afsluiting
+        .required-indicator {
+            color: #c0392b;
+            margin-left: 2px;
+        }
 
-**D1. Heb je al een idee van de gewenste tijdlijn?**
-☐ We willen snel starten (< 3 maanden)
-☐ We denken aan start op middellange termijn (3–12 maanden)
-☐ Dit is een langetermijnverkenning
-☐ Nog geen idee
+        .advice-block {
+            margin-top: 10px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            background-color: #fff6f5;
+            border: 1px solid #f2c4bf;
+            font-size: 0.93rem;
+        }
 
-**D2. Zijn er gevoelige aspecten waar we rekening mee moeten houden?**
-☐ Intellectueel eigendom of datagebruik
-☐ Reputatierisico (bijv. controversiële partner of thema)
-☐ Financiële belangen of belangenverstrengeling
-☐ Geen bijzonderheden
+        .advice-title {
+            margin: 0 0 4px;
+            font-weight: 600;
+            color: var(--uva-red);
+            font-size: 0.95rem;
+        }
 
----
+        .hidden {
+            display: none;
+        }
 
-## Aanbeveling en doorverwijzing
+        .actions {
+            margin-top: 28px;
+            border-top: 1px solid var(--border-gray);
+            padding-top: 20px;
+        }
 
-Op basis van je antwoorden geldt het volgende:
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border: none;
+            border-radius: 999px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: var(--uva-red);
+            color: #ffffff;
+            transition: background-color 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+        }
 
-| Situatie | Aanbevolen niveau | Eerste stap |
-|---|---|---|
-| Eenmalig, één docent/onderzoeker, nieuw contact | Individueel / vakgroep | Bespreek met je opleidingscoördinator of themacoördinator |
-| Incidenteel, onderwijs in één vak | Vakgroep / opleiding | Bespreek met opleidingscoördinator; Impact Team ondersteunt bij formats |
-| Meerdere vakgroepen of structurele onderwijssamenwerking | Facultair | Contact via impact-fgw@uva.nl |
-  </html>
-| Onderzoeksopdracht of kortlopend contractonderzoek | Individueel / vakgroep | Contact met Impact Developer via impact-fgw@uva.nl |
-| Consortium, subsidieaanvraag of meerjarig onderzoek | Facultair | Contact via impact-fgw@uva.nl (subsidieadviseur + Impact Developer) |
-| Bijzondere leerstoel, living lab of strategisch partnership | Facultair / UvA-breed | Direct contact Impact Developer + faculteitsbestuur |
+        .submit-button:hover {
+            background-color: #8f1c1c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+        }
 
----
+        .submit-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
 
-*Versie 0.1 – concept voor intern gebruik FGw / AIHR*
+        .submit-button:focus-visible {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 3px;
+        }
+
+        .submit-arrow {
+            font-size: 1.1rem;
+        }
+
+        .confirmation {
+            display: none;
+            text-align: left;
+            padding: 12px 0 4px;
+        }
+
+        .confirmation-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--uva-red);
+            margin: 0 0 8px;
+        }
+
+        .confirmation p {
+            margin: 0 0 4px;
+            font-size: 0.97rem;
+        }
+
+        .confirmation-email {
+            font-weight: 600;
+        }
+
+        .footer-note {
+            margin-top: 8px;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="card">
+        <header>
+            <h1>Intake Partnership FGw</h1>
+            <p class="subtitle">Voor onderzoekers en docenten die een samenwerking met een externe partner willen verkennen.</p>
+            <p class="contact">
+                Vragen? Mail naar
+                <a href="mailto:impact-fgw@example.com">impact-fgw@example.com</a>.
+            </p>
+        </header>
+
+        <main>
+            <form id="intakeForm" novalidate>
+                <!-- Deel A – De partner en de aanleiding -->
+                <section class="section" aria-labelledby="section-a-title">
+                    <h2 id="section-a-title" class="section-title"><span>Deel A.</span> De partner en de aanleiding</h2>
+
+                    <div class="field-group">
+                        <label for="orgName" class="field-label">
+                            A1. Naam organisatie
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <input type="text" id="orgName" name="orgName" required>
+                    </div>
+
+                    <fieldset class="field-group">
+                        <legend>
+                            A1. Type organisatie
+                        </legend>
+                        <div class="field-description">Meerdere opties mogelijk.</div>
+                        <div class="options-group options-group--columns-2">
+                            <label class="option-item">
+                                <input type="checkbox" name="orgType" value="bedrijf">
+                                <span class="option-label">Bedrijf</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="orgType" value="ngo">
+                                <span class="option-label">NGO / maatschappelijke organisatie</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="orgType" value="overheid">
+                                <span class="option-label">Overheid / publieke instelling</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="orgType" value="culturele-instelling">
+                                <span class="option-label">Culturele instelling</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="orgType" value="anders">
+                                <span class="option-label">Anders</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="field-group">
+                        <legend>
+                            A2. Hoe is dit contact ontstaan?
+                        </legend>
+                        <div class="field-description">Meerdere opties mogelijk.</div>
+                        <div class="options-group options-group--columns-2">
+                            <label class="option-item">
+                                <input type="checkbox" name="contactOrigin" value="partner-heeft-contact-opgenomen">
+                                <span class="option-label">Partner heeft zelf contact opgenomen</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="contactOrigin" value="eigen-netwerk">
+                                <span class="option-label">Via eigen netwerk</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="contactOrigin" value="collega">
+                                <span class="option-label">Via een collega</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="contactOrigin" value="evenement">
+                                <span class="option-label">Via een evenement of bijeenkomst</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="contactOrigin" value="anders">
+                                <span class="option-label">Anders</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="field-group">
+                        <label for="partnerQuestion" class="field-label">
+                            A3. Wat is de aanleiding of vraag vanuit de partner?
+                        </label>
+                        <textarea id="partnerQuestion" name="partnerQuestion"></textarea>
+                    </div>
+                </section>
+
+                <!-- Deel B – De samenwerking -->
+                <section class="section" aria-labelledby="section-b-title">
+                    <h2 id="section-b-title" class="section-title"><span>Deel B.</span> De samenwerking</h2>
+
+                    <fieldset class="field-group">
+                        <legend>
+                            B1. Wat voor samenwerking wordt beoogd?
+                        </legend>
+                        <div class="field-description">Meerdere opties mogelijk.</div>
+                        <div class="options-group options-group--columns-2">
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="adviesopdracht">
+                                <span class="option-label">Adviesopdracht</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="contractonderzoek">
+                                <span class="option-label">Contractonderzoek</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="stage">
+                                <span class="option-label">Stage</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="consortium-subsidieproject">
+                                <span class="option-label">Consortium / subsidieproject</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="living-lab">
+                                <span class="option-label">Living lab</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="bijzondere-leerstoel">
+                                <span class="option-label">Bijzondere leerstoel</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="embedded-research">
+                                <span class="option-label">Embedded research</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="onderwijssamenwerking">
+                                <span class="option-label">Onderwijssamenwerking</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="collabType" value="anders">
+                                <span class="option-label">Anders</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="field-group">
+                        <label for="phase" class="field-label">
+                            B2. In welke fase bevindt de samenwerking zich?
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <select id="phase" name="phase" required>
+                            <option value="">— selecteer —</option>
+                            <option value="fase1">Fase 1 – Kennismaking / open markt</option>
+                            <option value="fase2">Fase 2 – Gezamenlijk doel formuleren</option>
+                            <option value="fase3">Fase 3 – Samenwerken op basis van een agenda</option>
+                            <option value="fase4">Fase 4 – Consolideren of uitbouwen</option>
+                        </select>
+
+                        <div id="phaseAdvice" class="advice-block hidden" aria-live="polite">
+                            <p class="advice-title">Advies bij deze fase</p>
+                            <p id="phaseAdviceText"></p>
+                        </div>
+                    </div>
+
+                    <fieldset class="field-group">
+                        <legend>
+                            B3. Welk thema sluit het beste aan?
+                        </legend>
+                        <div class="field-description">Meerdere opties mogelijk.</div>
+                        <div class="options-group options-group--columns-2">
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="cultural-heritage-identity">
+                                <span class="option-label">Cultural Heritage &amp; Identity</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="humane-ai">
+                                <span class="option-label">Humane AI</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="empowering-language">
+                                <span class="option-label">Empowering Language</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="digital-citizenship">
+                                <span class="option-label">Digital Citizenship</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="health-humanities">
+                                <span class="option-label">Health Humanities</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="environment-society">
+                                <span class="option-label">Environment &amp; Society</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="checkbox" name="theme" value="nog-onduidelijk">
+                                <span class="option-label">Nog onduidelijk</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="field-group">
+                        <legend>
+                            B4. Is er al een idee over financiering?
+                        </legend>
+                        <div class="options-group">
+                            <label class="option-item">
+                                <input type="radio" name="funding" value="ja">
+                                <span class="option-label">Ja</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="funding" value="nee">
+                                <span class="option-label">Nee</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="funding" value="deels">
+                                <span class="option-label">Deels / nog te verkennen</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="field-group">
+                        <label for="collabDescription" class="field-label">
+                            B5. Toelichting op de samenwerking (optioneel)
+                        </label>
+                        <textarea id="collabDescription" name="collabDescription"></textarea>
+                    </div>
+                </section>
+
+                <!-- Deel C – Uw gegevens -->
+                <section class="section" aria-labelledby="section-c-title">
+                    <h2 id="section-c-title" class="section-title"><span>Deel C.</span> Uw gegevens</h2>
+
+                    <div class="field-group">
+                        <label for="name" class="field-label">
+                            Naam
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email" class="field-label">
+                            E-mailadres
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="department" class="field-label">
+                            Afdeling / onderzoeksgroep
+                        </label>
+                        <input type="text" id="department" name="department">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="role" class="field-label">
+                            Functie
+                        </label>
+                        <input type="text" id="role" name="role">
+                    </div>
+                </section>
+
+                <!-- Verzenden -->
+                <section class="actions">
+                    <button type="submit" class="submit-button">
+                        <span>Intake versturen</span>
+                        <span class="submit-arrow" aria-hidden="true">→</span>
+                    </button>
+                </section>
+            </form>
+
+            <section id="confirmation" class="confirmation" aria-live="polite">
+                <h2 class="confirmation-title">Bedankt voor uw intake!</h2>
+                <p>We hebben uw gegevens ontvangen.</p>
+                <p>We nemen zo snel mogelijk contact met u op via
+                    <span class="confirmation-email" id="confirmationEmail"></span>.
+                </p>
+                <p class="footer-note">
+                    U kunt in de tussentijd bij vragen contact opnemen met het Impact team via
+                    <a href="mailto:impact-fgw@example.com">impact-fgw@example.com</a>.
+                </p>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script>
+    (function () {
+        // Dynamische adviesteksten per fase
+        const adviceTexts = {
+            fase1: "Dit is een vroege verkenning. Nuttig om eerst een informeel gesprek te plannen via het Impact team (impact-fgw@example.com). Geschikte vormen: presentatie, kennismakingsgesprek, kleine adviesopdracht.",
+            fase2: "Er is al enige basis. Overweeg een proof-of-concept of een gezamenlijk subsidieproject. Het Impact team kan helpen bij consortiumvorming.",
+            fase3: "De samenwerking heeft structuur nodig. Denk aan embedded research, een living lab of meerjarige afspraken. Betrek de Impact Developer bij contractvorming.",
+            fase4: "Dit is een rijpe samenwerking. Mogelijkheden: bijzondere leerstoel, strategisch partnership, opschaling via Horizon Europe of NWO."
+        };
+
+        const phaseSelect = document.getElementById("phase");
+        const phaseAdvice = document.getElementById("phaseAdvice");
+        const phaseAdviceText = document.getElementById("phaseAdviceText");
+
+        phaseSelect.addEventListener("change", function () {
+            const value = phaseSelect.value;
+            if (value && adviceTexts[value]) {
+                phaseAdviceText.textContent = adviceTexts[value];
+                phaseAdvice.classList.remove("hidden");
+            } else {
+                phaseAdviceText.textContent = "";
+                phaseAdvice.classList.add("hidden");
+            }
+        });
+
+        // Afhandelen van verzenden (client-side)
+        const form = document.getElementById("intakeForm");
+        const confirmationSection = document.getElementById("confirmation");
+        const confirmationEmailSpan = document.getElementById("confirmationEmail");
+        const emailInput = document.getElementById("email");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Eenvoudige HTML5-validatie triggeren
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const emailValue = emailInput.value.trim();
+            confirmationEmailSpan.textContent = emailValue || "uw opgegeven e-mailadres";
+
+            form.style.display = "none";
+            confirmationSection.style.display = "block";
+        });
+    })();
+</script>
+</body>
+</html>
